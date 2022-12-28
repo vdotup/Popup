@@ -16,4 +16,5 @@ public struct PopupItem: Equatable {
     let destination: AnyView
     let transition: AnyTransition
     let dimColor: Color
+    let outsideDismiss: Bool
 }

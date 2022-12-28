@@ -21,7 +21,9 @@ public struct PopupView: View {
                 view.dimColor
                     .edgesIgnoringSafeArea(.all)
                     .onTapGesture {
-                        manager.activePopup = nil
+                        if view.outsideDismiss {
+                            manager.activePopup = nil
+                        }
                     }
 
                 ZStack {

@@ -13,12 +13,13 @@ public final class PopupManager: ObservableObject {
     
     @Published public var activePopup: PopupItem?
     @Published public var alignment: Alignment = .bottom
-    @Published public var animation: Animation = .easeOut(duration: 0.2)
+    @Published public var animation: Animation = .spring()
     
     @Published public var defaultDimColor: Color = .black.opacity(0.3)
+    @Published public var defaultOutsieDismiss: Bool = true
     
     
-    public func push(_ view: some View, edge: Edge = .bottom, dimColor: Color? = nil) {
+    public func push(_ view: some View, edge: Edge = .bottom, dimColor: Color? = nil, outisdeDismiss: Bool? = nil) {
         switch edge {
         case .top: alignment = .top
         case .leading: alignment = .leading
@@ -27,7 +28,8 @@ public final class PopupManager: ObservableObject {
         }
         activePopup = .init(destination: AnyView(view),
                             transition: .move(edge: edge),
-                            dimColor: dimColor ?? defaultDimColor
+                            dimColor: dimColor ?? defaultDimColor,
+                            outsideDismiss: outisdeDismiss ?? defaultOutsieDismiss
         )
     }
     

@@ -28,7 +28,6 @@ public struct PopupView: View {
                     view.destination
                 }
                 .frame(maxWidth: .infinity)
-                .background(view.backgroundColor)
                 .transition(view.transition)
             }
         }

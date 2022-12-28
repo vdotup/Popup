@@ -18,7 +18,7 @@ public final class PopupManager: ObservableObject {
     @Published public var defaultDimColor: Color = .black.opacity(0.3)
     
     
-    public func push(_ view: some View, edge: Edge = .bottom, dimColor: Color?) {
+    public func push(_ view: some View, edge: Edge = .bottom, dimColor: Color? = nil) {
         switch edge {
         case .top: alignment = .top
         case .leading: alignment = .leading

@@ -9,7 +9,7 @@
 ### - if you show another popup it will dismiss old one automatically.
 
 # Install
-### pending...
+### - SPM -> https://github.com/vdotup/Popup
 
 # Usage
 ### - import Popup in root view

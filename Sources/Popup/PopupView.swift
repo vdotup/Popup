@@ -11,10 +11,6 @@ public struct PopupView: View {
     
     @ObservedObject private var manager = PopupManager.shared
     
-    public init() {
-        
-    }
-    
     public var body: some View {
         ZStack(alignment: manager.alignment) {
             if let view = manager.activePopup {

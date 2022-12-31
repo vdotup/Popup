@@ -12,25 +12,29 @@ public final class PopupManager: ObservableObject {
     public static let shared = PopupManager()
     
     @Published public var activePopup: PopupItem?
-    @Published public var alignment: Alignment = .bottom
+    @Published public var alignment: Alignment = .center
     @Published public var animation: Animation = .spring()
     
+    @Published public var defaultTransition: AnyTransition = .opacity
+    @Published public var defaultAlignment: Alignment = .center
+    @Published public var defaultAnimation: Animation = .spring()
     @Published public var defaultDimColor: Color = .black.opacity(0.3)
     @Published public var defaultOutsideDismiss: Bool = true
     
     public func push(_ view: some View,
-                     edge: Edge = .bottom,
+                     transition: AnyTransition? = nil,
+                     alignment: Alignment? = nil,
+                     animation: Animation? = nil,
                      dimColor: Color? = nil,
                      outsideDismiss: Bool? = nil
     ) {
-        switch edge {
-        case .top: alignment = .top
-        case .leading: alignment = .leading
-        case .bottom: alignment = .bottom
-        case .trailing: alignment = .trailing
-        }
+        
+        self.animation = animation ?? defaultAnimation
+        self.alignment = alignment ?? defaultAlignment
+        
         activePopup = .init(destination: AnyView(view),
-                            transition: .move(edge: edge),
+                            transition: transition ?? defaultTransition,
+                            animation: animation ?? defaultAnimation,
                             dimColor: dimColor ?? defaultDimColor,
                             outsideDismiss: outsideDismiss ?? defaultOutsideDismiss
         )

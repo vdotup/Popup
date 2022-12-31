@@ -15,6 +15,7 @@ public struct PopupItem: Equatable {
     let id = UUID()
     let destination: AnyView
     let transition: AnyTransition
+    let animation: Animation
     let dimColor: Color
     let outsideDismiss: Bool
 }
